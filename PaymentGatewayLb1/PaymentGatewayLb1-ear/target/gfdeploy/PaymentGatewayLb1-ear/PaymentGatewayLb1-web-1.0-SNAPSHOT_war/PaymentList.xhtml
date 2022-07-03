@@ -29,31 +29,31 @@
 
             <h:form styleClass="form">
                 <h1><h:outputText value="PAYMENT LIST"/>
-                    <h:commandButton id="newpayment" value="NEW PAYMENT" action="${paymentBean.newPayment()}" styleClass="button"/></h1>
-                <p:dataTable value="Values" var="item">
+                    <h:commandButton id="newpayment" value="NEW PAYMENT" action="#{pruebaBean.newPayment()}" styleClass="button"/></h1>
+                    <p:dataTable value="# {paymentBean.payments}" var="item" emptyMessage="No hay datos">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="PaymentId"/>
                         </f:facet>
-                        <h:outputText value="Aqui un id"/>
+                        <h:outputText value="58793"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="ClientId"/>
                         </f:facet>
-                        <h:outputText value="Aqui un idclient"/>
+                        <h:outputText value="4231"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="NumCreditCard"/>
                         </f:facet>
-                        <h:outputText value="aqui un numero de tarjeta"/>
+                        <h:outputText value="7931234156789872"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Amount"/>
                         </f:facet>
-                        <h:outputText value="Aqui un amount"/>
+                        <h:outputText value="7500"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">

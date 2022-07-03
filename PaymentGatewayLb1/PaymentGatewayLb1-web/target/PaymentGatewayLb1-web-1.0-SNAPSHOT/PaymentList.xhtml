@@ -30,37 +30,38 @@
             <h:form styleClass="form">
                 <h1><h:outputText value="PAYMENT LIST"/>
                     <h:commandButton id="newpayment" value="NEW PAYMENT" action="#{pruebaBean.newPayment()}" styleClass="button"/></h1>
-                <p:dataTable value="Values" var="item" emptyMessage="No hay datos">
+                    <p:dataTable value="# {paymentBean.payments}" var="item" emptyMessage="No hay datos">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="PaymentId"/>
                         </f:facet>
-                        <h:outputText value="58793"/>
+                        <h:outputText value="# {item.paymentId}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="ClientId"/>
                         </f:facet>
-                        <h:outputText value="4231"/>
+                        <h:outputText value="# {item.cltId}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="NumCreditCard"/>
                         </f:facet>
-                        <h:outputText value="7931234156789872"/>
+                        <h:outputText value="# {item.NCredCard}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="Amount"/>
                         </f:facet>
-                        <h:outputText value="7500"/>
+                        <h:outputText value="# {item.amount}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="TimeStamp"/>
                         </f:facet>
-                        <h:outputText value="2021-09-17 10:14:43">
-                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                        <h:outputText value="# {item.timeStamp}">
+                            <!--Se comentó para que se puede visualizar sin formato -->
+                            <!--<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />-->
                         </h:outputText>
                     </p:column>
                     

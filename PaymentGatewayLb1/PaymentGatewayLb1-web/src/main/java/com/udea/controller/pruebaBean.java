@@ -6,6 +6,9 @@
 package com.udea.controller;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,7 +25,7 @@ public class pruebaBean implements Serializable{
     
     public pruebaBean() {
     }
-    
+          
     public String getResult(){
         return this.result;
     }

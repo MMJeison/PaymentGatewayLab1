@@ -15,7 +15,7 @@
             border-radius: 10px;
             margin: auto;
             margin-top: 20px;
-            box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
         }
         .panelGrid{
             margin: auto;
@@ -32,6 +32,15 @@
             margin-left: 70px;
             margin-top: 10px;
         }
+        .form2{
+            width: 500px;
+            height: 150px;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 20px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+        }
     </style>
     <h:head>
         <title>Facelet Title</title>
@@ -44,7 +53,7 @@
                 </h1>
                 <p:panelGrid columns="2" styleClass="panelGrid">
                     <p:outputLabel value="ClientId:" for="clientId" />
-                    <p:inputText id="clientId" value="" title="ClientId" required="true" requiredMessage="The ClientId field is required."/>
+                    <p:inputNumber id="clientId" value="" decimalPlaces="0" title="ClientId" required="true" requiredMessage="The ClientId field is required."/>
                     
                     <p:outputLabel value="Name:" for="name" />
                     <p:inputText id="name" value="" title="Name" required="true" requiredMessage="The Name field is required."/>
@@ -58,11 +67,11 @@
                     
                     <p:outputLabel value="Cvv:"  for="cvv" />
                     <p:inputNumber id="cvv" value=""  maxValue="999" size="3" title="Cvv" required="true" decimalPlaces="0" requiredMessage="The Cvv field is required.">
-                            <f:validateLongRange for="valor" minimum="100" />
+                            <f:validateLongRange for="length" minimum="3"/>
                     </p:inputNumber> 
                     
                     <p:outputLabel value="CardExpirationDate:" for="cardExpirationDate" />
-                    <p:calendar id="cardExpirationDate" value="" pattern="MM/yy"  navigator="true" title="CardExpirationDate" required="true"  requiredMessage="The CardExpirationDate field is required."/>
+                    <p:calendar id="cardExpirationDate" value="" pattern="MM/yyyy"  navigator="true" title="CardExpirationDate" required="true"  requiredMessage="The CardExpirationDate field is required."/>
                     
                     <p:outputLabel value="Amount:" for="amount" />
                     <p:inputNumber id="amount" value="" decimalPlaces="0" maxValue="10000" maxlength="6" readonly="false"  title="Amount" required="true" requiredMessage="The Amount field is required.">
@@ -71,13 +80,25 @@
 
                 </p:panelGrid>
                 <p:panel styleClass="panel">
-                    <p:captcha id="captcha" required="true"></p:captcha>
+                    <p:captcha id="captcha" required="true" requiredMessage="El Captcha es obligatorio"></p:captcha>
                 </p:panel>
                 
                 <h:commandButton id="cancel" value="CANCEL" action="#{paymentBean.cancelPayment()}" styleClass="buttons"/>
-                <h:commandButton id="save" value="SAVE" action="#{paymentBean.newPayment(clientId.value)}" styleClass="buttons"/>
+                <h:commandButton id="save" type="submit" value="SAVE" 
+                                 action="#{paymentBean.paymentResult(clientId.value, name.value, email.value,
+                                           creditCardNumber.value, ccv.value, cardExpirationDate.value, amount.value)}" styleClass="buttons"/>
+            </h:form>
+            <h:form styleClass="form2">
+                <h1 style="text-align: center; padding: 5px 5px;">
+                    <h:outputText value="BOTONES PARA NAVEGAR"/>
+                </h1>
+                <h:commandButton id="cancel" value="CANCEL" action="#{pruebaBean.cancelPayment()}" styleClass="buttons"/>
+                <h:commandButton id="save" type="submit" value="SAVE" 
+                                 action="#{pruebaBean.paymentResult(clientId.value, name.value, email.value,
+                                           creditCardNumber.value, ccv.value, cardExpirationDate.value, amount.value)}" styleClass="buttons"/>
             </h:form>
         </f:view>
+        
 
     </h:body>
 </html>
