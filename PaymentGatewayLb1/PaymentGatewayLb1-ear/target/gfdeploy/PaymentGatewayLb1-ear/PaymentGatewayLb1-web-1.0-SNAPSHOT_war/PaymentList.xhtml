@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style type="text/css">
+        .form{
+            width: 95%;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 4px rgba(0,0,0,0.5);
+            margin: auto;
+            padding: 30px;
+        }
+        .button{
+            float: right;
+            width: 250px;
+            height: 40px;
+            border-radius: 10px;
+        }
+    </style>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form styleClass="form">
+                <h1><h:outputText value="PAYMENT LIST"/>
+                    <h:commandButton id="newpayment" value="NEW PAYMENT" action="${paymentBean.newPayment()}" styleClass="button"/></h1>
+                <p:dataTable value="Values" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="PaymentId"/>
+                        </f:facet>
+                        <h:outputText value="Aqui un id"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ClientId"/>
+                        </f:facet>
+                        <h:outputText value="Aqui un idclient"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="NumCreditCard"/>
+                        </f:facet>
+                        <h:outputText value="aqui un numero de tarjeta"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Amount"/>
+                        </f:facet>
+                        <h:outputText value="Aqui un amount"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TimeStamp"/>
+                        </f:facet>
+                        <h:outputText value="2021-09-17 10:14:43">
+                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                        </h:outputText>
+                    </p:column>
+                    
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

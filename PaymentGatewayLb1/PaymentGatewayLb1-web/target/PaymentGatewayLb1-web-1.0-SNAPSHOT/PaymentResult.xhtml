@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style type="text/css">
+        .body{
+
+        }
+        .form{
+            width: 500px;
+            height: 600px;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+        .shadow-red{
+            box-shadow: 0px 0px 20px rgba(255,0,0,1);
+        }
+        .shadow-green{
+            box-shadow: 0px 0px 20px rgba(0,255,0,1);
+        }
+        .qr{
+            margin-left: 75px;
+        }
+        .button{
+            width: 30%;
+            text-align: center;
+            border-radius: 7px;
+            padding: 20px;
+            margin-left: 170px;
+            margin-top: 10px;
+        }
+    </style>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form styleClass="form #{(pruebaBean.result == null || pruebaBean.result == 'FAILED')? 'shadow-red': 'shadow-green'}">
+                <h1 style="text-align: center; padding: 30px 10px 0px 10px;">
+                    <h:outputText value="PAYMENT #{pruebaBean.result == null? 'FAILED': pruebaBean.result}"/>
+                </h1>
+                <p:barcode value="#{(pruebaBean.message == null)? pruebaBean.result: pruebaBean.message}" 
+                           type="qr" height="350px" width="350px" styleClass="qr"/>
+                <h:commandButton id="cancel" value="END" action="#{pruebaBean.endPayment()}" styleClass="button"/>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

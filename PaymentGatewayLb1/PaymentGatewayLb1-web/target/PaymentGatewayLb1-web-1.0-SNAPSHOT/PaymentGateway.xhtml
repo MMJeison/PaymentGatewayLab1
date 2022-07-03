@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style type="text/css">
+        .body{
+
+        }
+        .form{
+            width: 500px;
+            height: 600px;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 20px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+        }
+        .panelGrid{
+            margin: auto;
+        }
+        .panel{
+            width: 85%;
+            margin: auto;
+        }
+        .buttons{
+            width: 30%;
+            text-align: center;
+            border-radius: 7px;
+            padding: 20px;
+            margin-left: 70px;
+            margin-top: 10px;
+        }
+        .form2{
+            width: 500px;
+            height: 150px;
+            max-width: 500px;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 20px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+        }
+    </style>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body styleClass="body">
+        <f:view>
+            <h:form styleClass="form">
+                <h1 style="text-align: center; padding: 30px 10px;">
+                    <h:outputText value="PAYMENT GATEWAY"/>
+                </h1>
+                <p:panelGrid columns="2" styleClass="panelGrid">
+                    <p:outputLabel value="ClientId:" for="clientId" />
+                    <p:inputNumber id="clientId" value="" decimalPlaces="0" title="ClientId" required="true" requiredMessage="The ClientId field is required."/>
+                    
+                    <p:outputLabel value="Name:" for="name" />
+                    <p:inputText id="name" value="" title="Name" required="true" requiredMessage="The Name field is required."/>
+                    
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText id="email" value="" title="Email" required="true" requiredMessage="The Email field is required."/>
+                    
+                    <p:outputLabel value="CreditCardNumber:"  for="creditCardNumber" />                    
+                    <p:inputText id="creditCardNumber" value="" maxlength="16" size="16"  title="CreditCardNumber" required="true" requiredMessage="The CreditCardNumber field is required."/>
+                                        
+                    
+                    <p:outputLabel value="Cvv:"  for="cvv" />
+                    <p:inputNumber id="cvv" value=""  maxValue="999" size="3" title="Cvv" required="true" decimalPlaces="0" requiredMessage="The Cvv field is required.">
+                            <f:validateLongRange for="length" minimum="3"/>
+                    </p:inputNumber> 
+                    
+                    <p:outputLabel value="CardExpirationDate:" for="cardExpirationDate" />
+                    <p:calendar id="cardExpirationDate" value="" pattern="MM/yyyy"  navigator="true" title="CardExpirationDate" required="true"  requiredMessage="The CardExpirationDate field is required."/>
+                    
+                    <p:outputLabel value="Amount:" for="amount" />
+                    <p:inputNumber id="amount" value="" decimalPlaces="0" maxValue="10000" maxlength="6" readonly="false"  title="Amount" required="true" requiredMessage="The Amount field is required.">
+                        <f:validateLongRange for="valor" minimum="500" />
+                    </p:inputNumber> 
+
+                </p:panelGrid>
+                <p:panel styleClass="panel">
+                    <p:captcha id="captcha" required="true" requiredMessage="El Captcha es obligatorio"></p:captcha>
+                </p:panel>
+                
+                <h:commandButton id="cancel" value="CANCEL" action="#{paymentBean.cancelPayment()}" styleClass="buttons"/>
+                <h:commandButton id="save" type="submit" value="SAVE" 
+                                 action="#{paymentBean.paymentResult(clientId.value, name.value, email.value,
+                                           creditCardNumber.value, ccv.value, cardExpirationDate.value, amount.value)}" styleClass="buttons"/>
+            </h:form>
+            <h:form styleClass="form2">
+                <h1 style="text-align: center; padding: 5px 5px;">
+                    <h:outputText value="BOTONES PARA NAVEGAR"/>
+                </h1>
+                <h:commandButton id="cancel" value="CANCEL" action="#{pruebaBean.cancelPayment()}" styleClass="buttons"/>
+                <h:commandButton id="save" type="submit" value="SAVE" 
+                                 action="#{pruebaBean.paymentResult(clientId.value, name.value, email.value,
+                                           creditCardNumber.value, ccv.value, cardExpirationDate.value, amount.value)}" styleClass="buttons"/>
+            </h:form>
+        </f:view>
+        
+
+    </h:body>
+</html>
+
